@@ -1,30 +1,28 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        url: configService.get('DATABASE_URL'), // Railway автоматически создаст эту переменную
-        entities: [User],
-        synchronize: true, // для demo - создаст таблицы автоматически
-        ssl: {
-          rejectUnauthorized: false, // для Railway
-        },
-      }),
-      inject: [ConfigService],
-    }),
+    // TypeOrmModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: (configService: ConfigService) => ({
+    //     type: 'postgres',
+    //     url: configService.get('DATABASE_URL'),
+    //     entities: [User],
+    //     synchronize: true,
+    //     ssl: {
+    //       rejectUnauthorized: false,
+    //     },
+    //   }),
+    //   inject: [ConfigService],
+    // }),
     AuthModule,
     UsersModule,
   ],
