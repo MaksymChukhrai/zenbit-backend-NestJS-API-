@@ -1,24 +1,23 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { join } from 'path';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  // Включаем CORS для фронтенда
+  // Статические файлы
+  app.useStaticAssets(join(__dirname, '..', 'public'));
+
+  // CORS
   app.enableCors({
-    origin: process.env.NODE_ENV === 'production' ? true : 'http://localhost:3001',
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true,
   });
 
-  // Включаем глобальную валидацию
   app.useGlobalPipes(new ValidationPipe());
-
-  // Railway предоставляет динамический PORT
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-
-  console.log(`Application is running on: ${await app.getUrl()}`);
+  await app.listen(3000);
 }
 
 bootstrap().catch((error) => {

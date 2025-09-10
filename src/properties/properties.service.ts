@@ -10,7 +10,8 @@ export class PropertiesService {
       price: 6500000,
       currency: 'Dhs',
       priceLabel: '6 500 000 Dhs',
-      imageUrl: 'https://drive.google.com/uc?id=1Zcaw9iPeDg4EUPl19Y_09loeYbU8OaRB',
+      imageUrl:
+        'https://zenbit-backend-nestjs-api-production.up.railway.app/images/the_marina_torch.webp',
       yieldPercentage: 9.25,
       soldPercentage: 75,
       ticketSize: '60 000 Dhs',
@@ -24,7 +25,8 @@ export class PropertiesService {
       price: 6500000,
       currency: 'Dhs',
       priceLabel: '6 500 000 Dhs',
-      imageUrl: 'https://drive.google.com/uc?id=16Rg1hLQTNb0wHtBiNndjT6BtkPhALHXu',
+      imageUrl:
+        'https://zenbit-backend-nestjs-api-production.up.railway.app/images/hhhr-tower.webp',
       yieldPercentage: 9.25,
       soldPercentage: 75,
       ticketSize: '60 000 Dhs',
@@ -38,7 +40,8 @@ export class PropertiesService {
       price: 6500000,
       currency: 'Dhs',
       priceLabel: '6 500 000 Dhs',
-      imageUrl: 'https://drive.google.com/uc?id=1-ay-402uMvfHl-vz9VWp78blAfYGrjLE',
+      imageUrl:
+        'https://zenbit-backend-nestjs-api-production.up.railway.app/images/ocean_peaks.webp',
       yieldPercentage: 9.25,
       soldPercentage: 75,
       ticketSize: '60 000 Dhs',
@@ -52,7 +55,7 @@ export class PropertiesService {
       price: 6500000,
       currency: 'Dhs',
       priceLabel: '6 500 000 Dhs',
-      imageUrl: 'https://drive.google.com/uc?id=1gpUpXgVhH8KxJd8ympe9cyzAECoz7Tbh',
+      imageUrl: 'https://zenbit-backend-nestjs-api-production.up.railway.app/images/ai-yaqoub.webp',
       yieldPercentage: 9.25,
       soldPercentage: 75,
       ticketSize: '60 000 Dhs',
