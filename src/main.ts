@@ -7,8 +7,7 @@ async function bootstrap() {
 
   // Включаем CORS для фронтенда
   app.enableCors({
-    origin:
-      process.env.NODE_ENV === 'production' ? true : 'http://localhost:3001',
+    origin: process.env.NODE_ENV === 'production' ? true : 'http://localhost:3001',
     credentials: true,
   });
 
