@@ -1,19 +1,24 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { join } from 'path';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  // Настройка статических файлов
+  app.useStaticAssets(join(__dirname, '..', 'public'));
 
   // CORS настройки для всех Vercel доменов
   app.enableCors({
     origin: [
-      'http://localhost:3000', // React dev server
-      'http://localhost:3001', // Альтернативный порт
-      'https://zenbit-frontend-react.vercel.app', // Production domain
-      'https://zenbit-frontend-react-gmblccy06-maksymchukhrais-projects.vercel.app', // Deployment URL
-      /^https:\/\/zenbit-frontend-react.*\.vercel\.app$/, // Регулярное выражение для всех Vercel preview URLs
-      /^https:\/\/zenbit-frontend-react.*maksymchukhrais-projects\.vercel\.app$/, // User project URLs
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://zenbit-frontend-react.vercel.app',
+      'https://zenbit-frontend-react-gmblccy06-maksymchukhrais-projects.vercel.app',
+      /^https:\/\/zenbit-frontend-react.*\.vercel\.app$/,
+      /^https:\/\/zenbit-frontend-react.*maksymchukhrais-projects\.vercel\.app$/,
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
@@ -22,7 +27,6 @@ async function bootstrap() {
     optionsSuccessStatus: 204,
   });
 
-  // Включаем глобальную валидацию
   app.useGlobalPipes(new ValidationPipe());
 
   const port = process.env.PORT || 3000;
