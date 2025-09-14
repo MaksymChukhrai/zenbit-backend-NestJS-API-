@@ -11,19 +11,7 @@ import { PropertiesModule } from './properties/properties.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    // TypeOrmModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   useFactory: (configService: ConfigService) => ({
-    //     type: 'postgres',
-    //     url: configService.get('DATABASE_URL'),
-    //     entities: [User],
-    //     synchronize: true,
-    //     ssl: {
-    //       rejectUnauthorized: false,
-    //     },
-    //   }),
-    //   inject: [ConfigService],
-    // }),
+
     AuthModule,
     UsersModule,
     PropertiesModule,
